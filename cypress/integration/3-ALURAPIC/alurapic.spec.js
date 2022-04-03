@@ -46,7 +46,7 @@ describe('Login e registro de usuarios alura pic', () => {
     
     const usuarios = require('../../fixtures/usuarios.json');
     usuarios.forEach(usuario => {
-        it.only('cadastro usuario ' +usuario.fulName, () => {
+        it('cadastro usuario ' +usuario.fulName, () => {
             cy.cadastro_usuario(usuario.email, usuario.fulName, usuario.userName, usuario.password)
         })    
     });
