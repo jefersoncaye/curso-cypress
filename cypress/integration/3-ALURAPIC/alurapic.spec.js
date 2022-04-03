@@ -4,8 +4,8 @@ describe('Login e registro de usuarios alura pic', () => {
       cy.visit('https://alura-fotos.herokuapp.com')
 
      })
-    // Teste repositorio 2
-    it('verifica mensagens validacao', () => {
+
+     it('verifica mensagens validacao', () => {
         cy.contains('a', 'Register now').click();
         cy.contains('button', 'Register').click();
         cy.contains('ap-vmessage', 'Email is required!').should('be.visible');
@@ -43,6 +43,13 @@ describe('Login e registro de usuarios alura pic', () => {
             expect(str).to.equal('Invalid user name or password');
         })
     })
-
+    
+    const usuarios = require('../../fixtures/usuarios.json');
+    usuarios.forEach(usuario => {
+        it.only('cadastro usuario ' +usuario.fulName, () => {
+            cy.cadastro_usuario(usuario.email, usuario.fulName, usuario.userName, usuario.password)
+        })    
+    });
+    
 })
 
