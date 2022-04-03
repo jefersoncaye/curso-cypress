@@ -15,12 +15,15 @@ describe('Buscar Fotos e Dados', () =>{
         cy.request({
             method: 'POST',
             url: 'https://apialurapic.herokuapp.com/user/login',
-            body: Cypress.env()
+            body: {
+                userName: Cypress.env("userName"),
+                password: Cypress.env("password")
+            }
         }).then((res) => {
             expect(res.status).to.be.equal(200)
             expect(res.body).is.not.empty
             expect(res.body).to.have.property('id')
             expect(res.body.id).is.not.null
         })
-    })
+    })  
 })
